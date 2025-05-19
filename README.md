@@ -1,8 +1,8 @@
-# 🧹 GitClean CLI
+# 🧹 gitclean
 
-A simple and powerful command-line tool to clean up your local Git repositories by removing untracked files and directories — safely and efficiently.
+A simple CLI tool written in Go to identify and optionally delete **stale local Git branches** that no longer exist on the remote. Keeps your local Git repo clean and manageable.
 
-![Go Version](https://img.shields.io/badge/Go-1.20+-blue?logo=go)
+![Go Version](https://img.shields.io/badge/Go-1.24+-blue?logo=go)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey)
 
@@ -10,20 +10,20 @@ A simple and powerful command-line tool to clean up your local Git repositories 
 
 ## ✨ Features
 
-- 🗑️ Cleans untracked files and directories (similar to `git clean -fd`)
-- 🕵️ Dry-run mode for safe previews before deleting
-- 📁 Target specific Git repositories
-- 🧪 Built with the Go standard library — no external dependencies
-- 🧼 Useful for monorepos or cleaning multiple repositories in bulk
+- 🔍 Detects stale local branches by comparing against a remote
+- 🗑️ Optionally delete stale branches via `--delete`
+- 🌐 Supports custom remotes (default: `origin`)
+- ⚙️ Pure Go with minimal code and no dependencies
+- 🔒 Never deletes `main` or `master` branches
 
 ---
 
 ## 📦 Installation
 
-### Option 1: Go Install (recommended)
+### Option 1: Go Install
 
 ```bash
-go install github.com/hadzicni/gitclean-cli@latest
+go install github.com/hadzicni/gitclean/cmd/gitclean@latest
 ```
 
 Make sure `$GOPATH/bin` is in your `$PATH`.
@@ -31,9 +31,9 @@ Make sure `$GOPATH/bin` is in your `$PATH`.
 ### Option 2: Manual Build
 
 ```bash
-git clone https://github.com/hadzicni/gitclean-cli.git
-cd gitclean-cli
-go build -o gitclean ./cmd/gitclean
+git clone https://github.com/hadzicni/gitclean.git
+cd gitclean/cmd/gitclean
+go build -o gitclean
 ```
 
 ---
@@ -46,73 +46,39 @@ gitclean [flags]
 
 ### Available Flags
 
-| Flag              | Description                                      | Example                          |
-|-------------------|--------------------------------------------------|----------------------------------|
-| `--path`, `-p`    | Path to the Git repo (default: current directory) | `gitclean -p ./my-project`       |
-| `--dry-run`, `-d` | Show what would be deleted without deleting      | `gitclean -d`                    |
-| `--force`, `-f`   | Actually perform deletion                        | `gitclean -f`                    |
-| `--help`, `-h`    | Show help message                                | `gitclean -h`                    |
+| Flag           | Description                                 |
+|----------------|---------------------------------------------|
+| `--delete`, `-d` | Delete all stale local branches             |
+| `--remote`, `-r` | Specify remote to compare against (default: `origin`) |
 
 ---
 
 ## 🔧 Examples
 
-Dry run on current directory:
+List stale branches:
 
 ```bash
 gitclean
 ```
 
-Clean a specific path (force mode):
+List using a custom remote:
 
 ```bash
-gitclean -p ./some-repo -f
+gitclean -r upstream
 ```
 
-Preview changes on a specific directory:
+Delete all stale branches:
 
 ```bash
-gitclean -p ./some-repo -d
-```
-
----
-
-## 🧪 Development
-
-Run the CLI locally:
-
-```bash
-go run ./cmd/gitclean
-```
-
-Run tests:
-
-```bash
-go test ./...
-```
-
----
-
-## 📁 Project Structure
-
-```
-.
-├── cmd/
-│   └── gitclean/       # CLI logic and argument parsing
-├── internal/           # Reusable internal packages
-│   └── cleaner/        # Cleaning logic
-├── go.mod              # Go module definition
-├── LICENSE             # License file
-└── README.md           # Project documentation
+gitclean -d
 ```
 
 ---
 
 ## 👨‍💻 Author
 
-Made with ❤️ by **Nikola Hadzic**
-
-- GitHub: [@hadzicni](https://github.com/hadzicni)
+Made by **Nikola Hadzic**  
+GitHub: [@hadzicni](https://github.com/hadzicni)
 
 ---
 
