@@ -1,4 +1,4 @@
-# 🧹 gitclean
+# 🧹 GitClean CLI
 
 A simple CLI tool written in Go to identify and optionally delete **stale local Git branches** that no longer exist on the remote. Keeps your local Git repo clean and manageable.
 
