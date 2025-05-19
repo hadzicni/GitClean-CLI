@@ -3,7 +3,7 @@
 A simple CLI tool written in Go to identify and optionally delete **stale local Git branches** that no longer exist on the remote. Keeps your local Git repo clean and manageable.
 
 ![Go Version](https://img.shields.io/badge/Go-1.24+-blue?logo=go)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey)
 
 ---
