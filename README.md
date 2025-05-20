@@ -23,7 +23,7 @@ A simple CLI tool written in Go to identify and optionally delete **stale local 
 ### Option 1: Go Install
 
 ```bash
-go install github.com/hadzicni/gitclean/cmd/gitclean@latest
+go install github.com/hadzicni/gitclean-cli/cmd/gitclean@latest
 ```
 
 Make sure `$GOPATH/bin` is in your `$PATH`.
