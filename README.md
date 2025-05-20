@@ -28,7 +28,17 @@ go install github.com/hadzicni/gitclean/cmd/gitclean@latest
 
 Make sure `$GOPATH/bin` is in your `$PATH`.
 
-### Option 2: Manual Build
+### Option 2: Manual Build (Windows, Linux, macOS)
+
+#### 🪟 Windows (PowerShell oder CMD)
+
+```powershell
+git clone https://github.com/hadzicni/gitclean.git
+cd gitclean/cmd/gitclean
+go build -o gitclean.exe
+```
+
+#### 🐧 Linux / 🍏 macOS
 
 ```bash
 git clone https://github.com/hadzicni/gitclean.git
@@ -46,9 +56,9 @@ gitclean [flags]
 
 ### Available Flags
 
-| Flag           | Description                                 |
-|----------------|---------------------------------------------|
-| `--delete`, `-d` | Delete all stale local branches             |
+| Flag             | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| `--delete`, `-d` | Delete all stale local branches                       |
 | `--remote`, `-r` | Specify remote to compare against (default: `origin`) |
 
 ---
@@ -85,4 +95,3 @@ GitHub: [@hadzicni](https://github.com/hadzicni)
 ## 📄 License
 
 This project is licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
-
